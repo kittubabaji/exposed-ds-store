@@ -1,0 +1,18 @@
+id: exposed-ds-store
+
+info:
+  name: Exposed .DS_Store File
+  author: Curious_Hunter(SurendraWadiwa)
+  severity: low
+  description: macOS .DS_Store file exposed, can reveal internal directory structure.
+  tags: exposure,macos,files
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.DS_Store"
+
+    matchers:
+      - type: binary
+        binary:
+          - "DSDB"
